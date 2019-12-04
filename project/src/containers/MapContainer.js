@@ -10,6 +10,8 @@ import { Button, Input, Divider, message } from 'antd';
 
 require('dotenv').config();
 
+// ENTER API KEY AT LINE 216
+
 // where we want our map to be centered
 const NY_BKBRIDGE = { lat: 40.7073329, lng: -74.0057195 };
 
@@ -213,7 +215,7 @@ class MapsContainer extends Component {
         <section className="col-8 h-lg">
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: 'AIzaSyAbERNzM4B9kAEErVnaQmJ2t1Pntx9mdHo',
+              key: ENTER_API_KEY_HERE,
               libraries: ['places', 'directions']
             }}
             defaultZoom={11}
