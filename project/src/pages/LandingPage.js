@@ -6,8 +6,10 @@ import {
   Link,
   NavLink
 } from 'react-router-dom';
+
 import WundrLogo from '../images/Logotype.png';
 import RunningWoman from '../images/test2.png';
+import ArtGirl from "../images/artGirl.png";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
@@ -58,6 +60,18 @@ import './LandingPage.css'
       );
   }
 
+  function Subheader2(){
+    return(
+        <div>
+          <p className = "subheader">Don't waste any more time!</p>
+            <p className="subheader_text">Don't👏 pretend👏 to 👏be 👏entitled👏 to👏 financial👏 compensation👏 if 👏you 👏or👏 a👏 loved 👏one 👏hasn't👏 even 👏been 👏diagnosed👏 with 👏mesothelioma
+          </p>
+        </div>
+      );
+  }
+
+
+
   // function myLink(){
   //   return(
   //     <Link to="https://www.google.com" target="_blank"></Link>
@@ -77,17 +91,17 @@ class LandingPage extends React.Component {
               </Col>
             </Row>
             
-            <Row>
+            <Row className="Row1">
               
-              <Col className="lineup" > 
+              <Col className="lineupL" > 
                 <img className ="runningWoman" src={RunningWoman} /> 
               </Col>
               
-              <Col className="lineup"> 
+              <Col className="lineupR"> 
                 <Subheader/>
                 <NavLink to="/findActivities">
                   <div style={{ display: "flex", justifyContent: "center" }}>
-                    <Button variant="outline-primary" href="https://www.google.com" className="customButton">Start Wundr-ing!</Button>
+                    <Button variant="outline-primary" href="https://www.google.com" bsClass="customButton">Start Wundr-ing!</Button>
                   </div>
                 </NavLink>
 
@@ -95,10 +109,12 @@ class LandingPage extends React.Component {
             
             </Row>
 
-            <Row>
+            <Row className="Row2">
               <Col>
-                <div className="adCon">~Additional Content~</div>
-                <Link to="./pages/AboutUsPage.js">trsta</Link>
+                <Subheader2/>
+              </Col>
+              <Col>
+                <img src={ArtGirl} className="artgirl"/>
               </Col>
             </Row>
 

@@ -5,6 +5,14 @@ import MapMarker from '../components/MapMarker';
 import PlaceCard from '../components/PlaceCard';
 import ConstraintSlider from '../components/ConstraintSlider';
 import CategoryDropDown from "../components/category";
+import WundrLogo from '../images/Logotype.png';
+import { 
+  BrowserRouter as Router, 
+  Switch, 
+  Route, 
+  Link,
+  NavLink
+} from 'react-router-dom';
 
 import { Button, Input, Divider, message } from 'antd';
 
@@ -14,6 +22,28 @@ require('dotenv').config();
 
 // where we want our map to be centered
 const NY_BKBRIDGE = { lat: 40.7073329, lng: -74.0057195 };
+
+function Navigation(props) {
+  return (
+    <nav className="navbar navbar-expand-sm navbar-light bg-light shadow mb-3">
+      <Link className="navbar-brand" to="/">
+        <img src={WundrLogo} alt="Logo" height="27px" width="auto" className="d-inline-block align-top" />
+        </Link>
+      <ul className="navbar-nav ml-auto">
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/posts/new">
+            Sign up
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" exact to="/about-us">
+            Login
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+}
 
 class MapsContainer extends Component {
   constructor(props) {
@@ -186,12 +216,19 @@ class MapsContainer extends Component {
     }));
   });
 
+
+  
   render() {
     const { constraints, mapsLoaded, newyorkLatLong, markers, searchResults } = this.state;
     const { autoCompleteService, geoCoderService } = this.state; // Google Maps Services
     return (
+
+<body>
+  <Navigation/>
+
+
       <div className="w-100 d-flex py-4 flex-wrap justify-content-center">
-        <h1 className="w-100 fw-md">Find Something to Do!</h1>
+        <h1 className="w-100 fw-md1">Find Something to Do!</h1>
         {/* Constraints section */}
         <section className="col-4">
           {mapsLoaded ?
@@ -214,7 +251,7 @@ class MapsContainer extends Component {
                       iconType="car"
                       value={time}
                       onChange={(value) => this.updateConstraintTime(key, value)}
-                      text="Minutes away by car"
+                      text="How much free time ya got?"
                     />
                     <CategoryDropDown 
                       onChange={(event) => this.updateUserChoices(event)}
@@ -259,7 +296,7 @@ class MapsContainer extends Component {
             <Divider />
             <section className="col-12">
               <div className="d-flex flex-column justify-content-center">
-                <h1 className="mb-4 fw-md">Tadah! Things to do!</h1>
+                <h1 className="mb-4 fw-md1">Tadah! Things to do!</h1>
                 <div className="d-flex flex-wrap">
                   {searchResults.map((result, key) => (
                     <PlaceCard info={result} />
@@ -270,6 +307,8 @@ class MapsContainer extends Component {
           </>
           : null}
       </div>
+      </body>
+
     )
   }
 }

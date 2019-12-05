@@ -52,9 +52,14 @@
 }
 
 
-.lineup{
+.lineupL{
   text-align: center;
+  padding-left: 100px;
+}
 
+.lineupR{
+  text-align: center;
+  padding-right: 100px;
 }
 
 .runningWoman{
@@ -99,4 +104,17 @@
 .footer{
   background-color: gray;
   padding: 100px;
+}
+
+.artgirl{
+  max-height: 400px;
+}
+
+.Row1{
+  padding-bottom: 50px;
+}
+
+
+.Row2{
+  padding-bottom: 25px;
 }
