@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MapContainer from './containers/MapContainer';
+import CategoryDropDown from './components/category';
 
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -9,10 +10,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-        </header> */}
         <div className="container h-100">
-          <MapContainer />
+          {/* <MapContainer /> */}
+          <CategoryDropDown />
         </div>
       </div>
     );

@@ -1,8 +1,5 @@
 import React from 'react';
 import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
   Link,
   NavLink
 } from 'react-router-dom';
@@ -69,14 +66,6 @@ import './LandingPage.css'
         </div>
       );
   }
-
-
-
-  // function myLink(){
-  //   return(
-  //     <Link to="https://www.google.com" target="_blank"></Link>
-  //   );
-  // }
 
 class LandingPage extends React.Component {
   render() {

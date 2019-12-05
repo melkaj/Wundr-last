@@ -1,44 +1,86 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
-import { Menu, Dropdown, Icon, Button, message } from 'antd';
+import { Select } from 'antd';
+import MapContainer from '../containers/MapContainer';
 
-const CategoryDropDown = (({ onChange }) => {
-    const menu = (
-        <Menu>
-          <Menu.Item>
-            <a target="entertainment" rel="noopener noreferrer" onClick={onChange}>
-              Entertainment
-            </a>
-          </Menu.Item>
-          <Menu.Item >
-            <a target="history" rel="noopener noreferrer" onClick={onChange}>
-              History
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a target="scenic" rel="noopener noreferrer" onClick={onChange}>
-              Scenic
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a target="food" rel="noopener noreferrer" onClick={onChange}>
-              Food
-            </a>
-          </Menu.Item>
-        </Menu>
-    );
-    return(
-        <div>
-            <Dropdown className="" overlay={menu} placement="bottomLeft" onClick={onChange}>
-                <Button>Choose Category</Button>
-            </Dropdown>
-        </div>
-    );
-});
+const { Option } = Select;
 
+class CategoryDropDown extends Component {
+    constructor(props){
+        super(props);
+        this.state ={
+            userChoice: ""
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.dropDown = this.dropDown.bind(this);
+    }
+    
+    handleChange = ((event) => {
+        console.log(event.target.value);
+    });
+
+    dropDown = (() => {
+        return(
+            <div>
+                <Select defaultValue="Choose Category" style={{ width: "10rem" }} onSelect={this.handleChange}>
+                    <Option value="fun">Entertainment</Option>
+                    <Option value="history" >History</Option>
+                    <Option value="nature">Scenic</Option>
+                    <Option value="food">Food</Option>
+                </Select>
+            </div>
+        );
+    });
+
+    render() {
+        return (
+            <div className="App">
+                <div className="container h-100">
+                    {this.dropDown}
+                    {/* <MapContainer /> */}
+                </div>
+            </div>
+        );
+    }
+}
 
 export default CategoryDropDown;
 
+
+
+// const CategoryDropDown = (({ onChange }) => {
+//     const menu = (
+//         <Menu>
+//           <Menu.Item>
+//             <a target="fun" rel="noopener noreferrer" onClick={onChange}>
+//               Entertainment
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item >
+//             <a target="history" rel="noopener noreferrer" onClick={onChange}>
+//               History
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item>
+//             <a target="nature" rel="noopener noreferrer" onClick={onChange}>
+//               Scenic
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item>
+//             <a target="food" rel="noopener noreferrer" onClick={onChange}>
+//               Food
+//             </a>
+//           </Menu.Item>
+//         </Menu>
+//     );
+//     return(
+//         <div>
+//             <Dropdown className="" overlay={menu} placement="bottomLeft" onClick={onChange}>
+//                 <Button>Choose Category</Button>
+//             </Dropdown>
+//         </div>
+//     );
+// });
 
 
 
