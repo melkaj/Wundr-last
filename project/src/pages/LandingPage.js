@@ -9,7 +9,7 @@ import {
 
 import WundrLogo from '../images/Logotype.png';
 import RunningWoman from '../images/test2.png';
-import ArtGirl from "../images/artGirl.png";
+//import ArtGirl from "../images/artGirl.png";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
@@ -20,9 +20,9 @@ import './LandingPage.css'
 
   function Navigation(props) {
     return (
-      <nav className="navbar navbar-expand-sm navbar-light bg-light shadow mb-3">
+      <nav className="navbar navbar-expand-sm navbar-primary bg-light ">
         <Link className="navbar-brand" to="/">
-          <img src={WundrLogo} alt="Logo" height="27px" width="auto" className="d-inline-block align-top" />
+          <img src={WundrLogo} alt="Logo" height="34px" width="auto" className="d-inline-block align-top" />
           </Link>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
@@ -101,7 +101,7 @@ class LandingPage extends React.Component {
                 <Subheader/>
                 <NavLink to="/findActivities">
                   <div style={{ display: "flex", justifyContent: "center" }}>
-                    <Button variant="outline-primary" href="https://www.google.com" bsClass="customButton">Start Wundr-ing!</Button>
+                    <Button variant="outline-primary" href="https://www.google.com" className="customButton" size="lg" block active>Start Wundr-ing!</Button>
                   </div>
                 </NavLink>
 
@@ -114,7 +114,8 @@ class LandingPage extends React.Component {
                 <Subheader2/>
               </Col>
               <Col>
-                <img src={ArtGirl} className="artgirl"/>
+                {/* <img src={ArtGirl} className="artgirl"/> */}
+                This is where ArtGirl should
               </Col>
             </Row>
 

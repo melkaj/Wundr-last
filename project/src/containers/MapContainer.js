@@ -238,7 +238,7 @@ class MapsContainer extends Component {
                 return (
                   <div key={key} className="mb-4">
                     <div className="d-flex mb-2">
-                      <Input className="col-4 mr-2" placeholder="Name" onChange={(event) => this.updateConstraintName(event, key)} />
+                      {/* <Input className="col-4 mr-2" placeholder="Name" onChange={(event) => this.updateConstraintName(event, key)} /> */}
                       <MapAutoComplete
                         autoCompleteService={autoCompleteService}
                         geoCoderService={geoCoderService}
@@ -288,7 +288,7 @@ class MapsContainer extends Component {
         </section>
 
         {/* Search Button */}
-        <Button className="mt-4 fw-md" type="primary" size="large" onClick={this.handleSearch}>Search!</Button>
+        <Button className="mt-4 fw-md" type="primary" size="lg" onClick={this.handleSearch}>Search!</Button>
 
         {/* Results section */}
         {searchResults.length > 0 ?

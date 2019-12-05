@@ -37,6 +37,11 @@
 
 .customButton{
   color: #4E67EB;
+  font-size: 200%;
+  font-family: 'Montserrat';
+  line-height: auto;
+  font-weight: 600;
+  text-align: center;
 }
 
 .body{
@@ -63,19 +68,18 @@
 }
 
 .runningWoman{
-  width: 58%;
+  width: 50%;
   height: auto;
   display: inline-block;
-
 }
 
 .subheader{
-  padding-top: 100px;
-  color: #4E67EB;	
-  font-size: 200%;
+  padding-top: 20px;
+  color: blue;	
+  font-size:  250%;
   font-family: 'Montserrat';
   line-height: auto;
-  font-weight: 800;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -85,9 +89,9 @@
   font-size: 150%;
   font-family: 'Montserrat';
   line-height: auto;
-  font-weight: 300;
+  font-weight: 100;
   text-align: center;
-  line-height: .95;
+  line-height: .98;
   padding-left: 50px;
   padding-right: 50px;
 }
