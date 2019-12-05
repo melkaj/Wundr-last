@@ -83,8 +83,7 @@ class LandingPage extends React.Component {
     return (
         // <Router>
           <body className="body">
-            <Navigation/>
-          
+          <Navigation/>          
             <Row>
               <Col className="HeaderBg">
                 <HeaderText/>

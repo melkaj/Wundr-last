@@ -29,7 +29,7 @@ const CategoryDropDown = (({ onChange }) => {
     );
     return(
         <div>
-            <Dropdown overlay={menu} placement="bottomLeft" onClick={onChange}>
+            <Dropdown className="" overlay={menu} placement="bottomLeft" onClick={onChange}>
                 <Button>Choose Category</Button>
             </Dropdown>
         </div>

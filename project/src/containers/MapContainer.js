@@ -25,7 +25,7 @@ const NY_BKBRIDGE = { lat: 40.7073329, lng: -74.0057195 };
 
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-light shadow mb-3">
+    <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <Link className="navbar-brand" to="/">
         <img src={WundrLogo} alt="Logo" height="27px" width="auto" className="d-inline-block align-top" />
         </Link>
