@@ -2,6 +2,49 @@ import React, { Component } from 'react';
 import 'antd/dist/antd.css';
 import { Menu, Dropdown, Icon, Button, message } from 'antd';
 
+const CategoryDropDown = (({ onChange }) => {
+    const menu = (
+        <Menu>
+          <Menu.Item>
+            <a target="entertainment" rel="noopener noreferrer" onClick={onChange}>
+              Entertainment
+            </a>
+          </Menu.Item>
+          <Menu.Item >
+            <a target="history" rel="noopener noreferrer" onClick={onChange}>
+              History
+            </a>
+          </Menu.Item>
+          <Menu.Item>
+            <a target="scenic" rel="noopener noreferrer" onClick={onChange}>
+              Scenic
+            </a>
+          </Menu.Item>
+          <Menu.Item>
+            <a target="food" rel="noopener noreferrer" onClick={onChange}>
+              Food
+            </a>
+          </Menu.Item>
+        </Menu>
+    );
+    return(
+        <div>
+            <Dropdown overlay={menu} placement="bottomLeft" onClick={onChange}>
+                <Button>Choose Category</Button>
+            </Dropdown>
+        </div>
+    );
+});
+
+
+export default CategoryDropDown;
+
+
+
+
+
+
+
 // const CategoryDropDown = (({ onChange }) => {
 //     return (
 //         <>
@@ -32,43 +75,3 @@ import { Menu, Dropdown, Icon, Button, message } from 'antd';
 //         </>
 //     );
 //   });
-
-
-
-
-const CategoryDropDown = (({ onChange }) => {
-    const menu = (
-        <Menu>
-          <Menu.Item>
-            <a target="entertainment" rel="noopener noreferrer" onClick={onChange}>
-              Entertainment
-            </a>
-          </Menu.Item>
-          <Menu.Item >
-            <a target="history" rel="noopener noreferrer" onClick={onChange}>
-              History
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a target="scenic" rel="noopener noreferrer" onClick={onChange}>
-              Scenic
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a target="food" rel="noopener noreferrer" onClick={onChange}>
-              Food
-            </a>
-          </Menu.Item>
-        </Menu>
-    );
-    return(
-        <div>
-            <Dropdown overlay={menu} placement="bottomLeft" onClick={onChange}>
-                <Button>Something</Button>
-            </Dropdown>
-        </div>
-    );
-});
-
-
-export default CategoryDropDown;

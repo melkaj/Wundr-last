@@ -118,6 +118,7 @@ class MapsContainer extends Component {
     const marker = markers[0];
     const timeLimit = constraints[0].time;
     const markerLatLng = new mapsApi.LatLng(marker.lat, marker.lng);
+
     let temp;
     if (this.state.userChoices.category === 'entertainment')
       temp = this.state.categoryTypes.entertainment;
@@ -127,8 +128,6 @@ class MapsContainer extends Component {
       temp = this.state.categoryTypes.history;
     else
       temp = this.state.categoryTypes.food;
-
-
 
     const placesRequest = {
       location: markerLatLng,
@@ -260,7 +259,7 @@ class MapsContainer extends Component {
             <Divider />
             <section className="col-12">
               <div className="d-flex flex-column justify-content-center">
-                <h1 className="mb-4 fw-md">Tadah! Ice-Creams!</h1>
+                <h1 className="mb-4 fw-md">Tadah! Things to do!</h1>
                 <div className="d-flex flex-wrap">
                   {searchResults.map((result, key) => (
                     <PlaceCard info={result} />
