@@ -40,17 +40,17 @@ const CategoryDropDown = (({ onChange }) => {
     const menu = (
         <Menu>
           <Menu.Item>
-            <a target="entertainment" rel="noopener noreferrer">
+            <a target="entertainment" rel="noopener noreferrer" onClick={onChange}>
               Entertainment
             </a>
           </Menu.Item>
           <Menu.Item >
-            <a target="history" rel="noopener noreferrer">
+            <a target="history" rel="noopener noreferrer" onClick={onChange}>
               History
             </a>
           </Menu.Item>
           <Menu.Item>
-            <a target="scenic" rel="noopener noreferrer">
+            <a target="scenic" rel="noopener noreferrer" onClick={onChange}>
               Scenic
             </a>
           </Menu.Item>
@@ -60,7 +60,7 @@ const CategoryDropDown = (({ onChange }) => {
             </a>
           </Menu.Item>
         </Menu>
-      );
+    );
     return(
         <div>
             <Dropdown overlay={menu} placement="bottomLeft" onClick={onChange}>
