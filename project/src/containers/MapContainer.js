@@ -21,6 +21,12 @@ class MapsContainer extends Component {
     this.state = {
       constraints: [{ name: '', time: 0 }],
       userChoices: {category: '', price: ''},
+      categoryTypes: {
+        entertainment: ['amusement_park', 'aquarium', 'book_store', 'beauty_salon', 'bowling_alley', 'casino', 'department_store', 'movie_theater', 'night_club', 'shopping_mall', 'stadium', 'zoo', 'park'],
+        history: ['art_gallery', 'museum'],
+        scenic: ['park', 'zoo', ],
+        food: ['bakery', 'bar', 'cafe', 'restaurant']
+      },
       searchResults: [],
       mapsLoaded: false,
       markers: [],
@@ -55,9 +61,10 @@ class MapsContainer extends Component {
     event.preventDefault();
     const prevUserChoices = this.state.userChoices;
     const userChoices = Object.assign([], prevUserChoices);
-    userChoices.category = event.target.value;
-    userChoices.price = event.target.value;
+    userChoices.category = event.target.target;
+    userChoices.price = event.target.valueM;
     this.setState({ userChoices });
+    console.log(this.state.userChoices);
   })
 
   // Adds a Marker to the GoogleMaps component
@@ -111,11 +118,22 @@ class MapsContainer extends Component {
     const marker = markers[0];
     const timeLimit = constraints[0].time;
     const markerLatLng = new mapsApi.LatLng(marker.lat, marker.lng);
+    let temp;
+    if (this.state.userChoices.category === 'entertainment')
+      temp = this.state.categoryTypes.entertainment;
+    else if (this.state.userChoices.category === 'scenic')
+      temp = this.state.categoryTypes.scenic;
+    else if (this.state.userChoices.category === 'history')
+      temp = this.state.categoryTypes.history;
+    else
+      temp = this.state.categoryTypes.food;
+
+
 
     const placesRequest = {
       location: markerLatLng,
       // radius: '30000', // Cannot be used with rankBy. Pick your poison!
-      type: ['restaurant', 'cafe', 'bakery'], // List of types: https://developers.google.com/places/supported_types
+      type: temp,  //['restaurant', 'cafe', 'bakery'], // List of types: https://developers.google.com/places/supported_types
       query: this.state.userChoices.category, //'pizza',
       rankBy: mapsApi.places.RankBy.DISTANCE, // Cannot be used with radius.
     };
@@ -215,7 +233,7 @@ class MapsContainer extends Component {
         <section className="col-8 h-lg">
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: ENTER_API_KEY_HERE,
+              key: "AIzaSyAbERNzM4B9kAEErVnaQmJ2t1Pntx9mdHo",
               libraries: ['places', 'directions']
             }}
             defaultZoom={11}
