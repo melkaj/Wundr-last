@@ -36,13 +36,14 @@ class MapsContainer extends Component {
     super(props);
     this.state = {
       constraints: [{ name: '', time: 0 }],
-      userChoices: {category: '', price: ''},
+      userChoices: {category: '', transitMode: ''},
       categoryTypes: {
         entertainment: ['amusement_park', 'aquarium', 'book_store', 'beauty_salon', 'bowling_alley', 'casino', 'department_store', 'movie_theater', 'night_club', 'shopping_mall', 'stadium', 'zoo', 'park'],
         history: ['art_gallery', 'museum'],
         scenic: ['park', 'zoo', ],
         food: ['bakery', 'bar', 'cafe', 'restaurant']
       },
+      searchIsClicked: false,
       searchResults: [],
       mapsLoaded: false,
       markers: [],
@@ -78,7 +79,14 @@ class MapsContainer extends Component {
     const prevUserChoices = this.state.userChoices;
     const userChoices = Object.assign([], prevUserChoices);
     userChoices.category = event; //.target.value
-    // userChoices.price = event.target.valueM;
+    this.setState({ userChoices });
+    console.log(this.state.userChoices);
+  })
+
+  updateTransitMode = ((event) => {
+    const prevUserChoices = this.state.userChoices;
+    const userChoices = Object.assign([], prevUserChoices);
+    userChoices.transitMode = event.target.value;
     this.setState({ userChoices });
     console.log(this.state.userChoices);
   })
@@ -125,6 +133,7 @@ class MapsContainer extends Component {
 
   // With the constraints
   handleSearch = (() => {
+    this.setState({searchIsClicked: true});
     const { markers, constraints, placesService, directionService, mapsApi } = this.state;
     if (markers.length === 0) {
       message.warn('Add a constraint and try again!');
@@ -135,6 +144,7 @@ class MapsContainer extends Component {
     const timeLimit = constraints[0].time;
     const markerLatLng = new mapsApi.LatLng(marker.lat, marker.lng);
 
+    // getting which type array we need to use
     let temp;
     if (this.state.userChoices.category === 'fun')
       temp = this.state.categoryTypes.entertainment;
@@ -147,10 +157,9 @@ class MapsContainer extends Component {
 
     const placesRequest = {
       location: markerLatLng,
-      // radius: '30000', // Cannot be used with rankBy. Pick your poison!
-      type: temp,  //['restaurant', 'cafe', 'bakery'], // List of types: https://developers.google.com/places/supported_types
-      query: this.state.userChoices.category, //'pizza',
-      rankBy: mapsApi.places.RankBy.prominence, // IT WAS DISTANCE // Cannot be used with radius.
+      type: temp,                                 // List of types: https://developers.google.com/places/supported_types
+      query: this.state.userChoices.category,
+      rankBy: mapsApi.places.RankBy.prominence, 
     };
 
     // used to get a random number between 0 and a specified value
@@ -175,12 +184,12 @@ class MapsContainer extends Component {
 
       for (let i = 0; i < responseLimit; i++) {
         // Finds random number from the first half of the results 
-        let temp = getRandomInt((response.length)/2);
+        let temp = getRandomInt((response.length));
         const activity = response[temp];
         
         // Makes sure that a response has not been chosen before
-        while (responseLength[temp] === true || (!activity.photos && activity.photos.length <= 0 && typeof(activity.photos[0].getUrl()) === 'undefined')){
-          temp = getRandomInt((response.length)/2);
+        while (responseLength[temp] === true || !activity.photos || activity.photos.length <= 0 || typeof(activity.photos[0].getUrl()) === 'undefined'){
+          temp = getRandomInt((response.length));
           activity = response[temp];
         }
 
@@ -209,7 +218,7 @@ class MapsContainer extends Component {
         const directionRequest = {
           origin: markerLatLng,
           destination: address, // Address of activity
-          travelMode: 'DRIVING',
+          travelMode: this.state.userChoices.transitMode, //'DRIVING',
         }
         directionService.route(directionRequest, ((result, status) => {
           if (status !== 'OK') { return }
@@ -254,6 +263,13 @@ class MapsContainer extends Component {
             <div>
               {constraints.map((constraint, key) => {
                 const { name, time } = constraint;
+                let temp;
+                if (this.state.userChoices.transitMode === 'DRIVING')
+                  temp = "car";
+                else if (this.state.userChoices.transitMode === 'WALKING')
+                  temp = "user"; 
+                else
+                  temp = "robot"
                 return (
                   <div key={key} className="mb-4">
                     <div className="d-flex mb-2">
@@ -266,17 +282,18 @@ class MapsContainer extends Component {
                         addMarker={this.addMarker}
                       />
                     </div>
+                    <CategoryDropDown 
+                      onChange={(event) => this.updateUserChoices(event)}
+                      onSwitch={(event) => this.updateTransitMode(event)}
+                    />
                     <div>
-                      <div>Distance: </div>
+                      <div>How many minutes away do you want to go? </div>
                     <ConstraintSlider
-                      iconType="car"
+                      iconType={temp}
                       value={time}
                       onChange={(value) => this.updateConstraintTime(key, value)}
                     />
                     </div>
-                    <CategoryDropDown 
-                      onChange={(event) => this.updateUserChoices(event)}
-                    />
                     <Divider />
                   </div>
                 );
@@ -326,7 +343,9 @@ class MapsContainer extends Component {
               </div>
             </section>
           </>
-          : null}
+          : this.state.searchIsClicked ? <h1 className="mb-4 fw-md1">Couldn't find anything but if you retry with new settings, 
+                                        we should be able to get something to show up</h1>
+                                        : null}
       </div>
     </body>
 

@@ -1,24 +1,62 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 // import { Menu, Dropdown, Icon, Button, message, Select } from 'antd';
-import { Select } from 'antd';
+import { Select, Radio } from 'antd';
 
 const { Option } = Select;
 
-const CategoryDropDown = (({ onChange }) => {
+const CategoryDropDown = (({ onChange, onSwitch}) => {
     return (
-        <div style={{paddingTop:"10px"}}>
-            <Select defaultValue="Choose Category" style={{ width: 200 }} onChange={onChange}>
-                <Option value="fun">Entertainment</Option>
-                <Option value="history">History</Option>
-                <Option value="nature">Nature</Option>
-                <Option value="food">Food</Option>
-            </Select>   
-        </div>
+        <>
+            <div style={{paddingTop:"10px", paddingBottom: "10px"}}>
+                <Select defaultValue="Choose Category" style={{ width: 200 }} onChange={onChange}>
+                    <Option value="fun">Entertainment</Option>
+                    <Option value="history">History</Option>
+                    <Option value="nature">Nature</Option>
+                    <Option value="food">Food</Option>
+                </Select>   
+            </div>
+            <div style={{ paddingBottom: "5px" }}>
+                <Radio.Group defaultValue="Walking" buttonStyle="solid" onChange={onSwitch}>
+                    <Radio.Button value="WALKING">Walking</Radio.Button>
+                    <Radio.Button value="TRANSIT">Transit </Radio.Button>
+                    <Radio.Button value="DRIVING">Driving</Radio.Button>
+                </Radio.Group>
+            </div>
+        </>
     );
 });
 
 export default CategoryDropDown;
+
+
+// ReactDOM.render(
+//   <div>
+//     <div>
+//       <Radio.Group defaultValue="a" buttonStyle="solid">
+//         <Radio.Button value="a">Hangzhou</Radio.Button>
+//         <Radio.Button value="b">Shanghai</Radio.Button>
+//         <Radio.Button value="c">Beijing</Radio.Button>
+//         <Radio.Button value="d">Chengdu</Radio.Button>
+//       </Radio.Group>
+//     </div>
+//     <div style={{ marginTop: 16 }}>
+//       <Radio.Group defaultValue="c" buttonStyle="solid">
+//         <Radio.Button value="a">Hangzhou</Radio.Button>
+//         <Radio.Button value="b" disabled>
+//           Shanghai
+//         </Radio.Button>
+//         <Radio.Button value="c">Beijing</Radio.Button>
+//         <Radio.Button value="d">Chengdu</Radio.Button>
+//       </Radio.Group>
+//     </div>
+//   </div>,
+//   mountNode,
+// );
+
+
+
+
 
 
 
