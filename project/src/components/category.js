@@ -22,6 +22,41 @@ export default CategoryDropDown;
 
 
 
+// const CategoryDropDown = (({ onChange }) => {
+//     const menu = (
+//         <Menu>
+//           <Menu.Item>
+//             <a target="fun" rel="noopener noreferrer" onClick={onChange}>
+//               Entertainment
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item >
+//             <a target="history" rel="noopener noreferrer" onClick={onChange}>
+//               History
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item>
+//             <a target="nature" rel="noopener noreferrer" onClick={onChange}>
+//               Scenic
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item>
+//             <a target="food" rel="noopener noreferrer" onClick={onChange}>
+//               Food
+//             </a>
+//           </Menu.Item>
+//         </Menu>
+//     );
+//     return(
+//         <div>
+//             <Dropdown className="" overlay={menu} placement="bottomLeft" onClick={onChange}>
+//                 <Button>Choose Category</Button>
+//             </Dropdown>
+//         </div>
+//     );
+// });
+
+
 
 // function handleChange(value) {
 //   console.log(`selected ${value}`);

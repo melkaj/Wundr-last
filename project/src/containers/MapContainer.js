@@ -7,14 +7,11 @@ import ConstraintSlider from '../components/ConstraintSlider';
 import CategoryDropDown from "../components/category";
 import WundrLogo from '../images/Logotype.png';
 import { 
-  BrowserRouter as Router, 
-  Switch, 
-  Route, 
   Link,
   NavLink
 } from 'react-router-dom';
 
-import { Button, Input, Divider, message } from 'antd';
+import { Button, Divider, message } from 'antd';
 
 require('dotenv').config();
 
@@ -105,7 +102,7 @@ class MapsContainer extends Component {
     // Name does not exist in marker list. Create new marker
     if (newMarker) {
       markers.push({ lat, lng, name });
-      message.success(`Added new "${name}" Marker`);
+      // message.success(`Added new "${name}" Marker`);
     }
 
     this.setState({ markers });
@@ -139,9 +136,9 @@ class MapsContainer extends Component {
     const markerLatLng = new mapsApi.LatLng(marker.lat, marker.lng);
 
     let temp;
-    if (this.state.userChoices.category === 'entertainment')
+    if (this.state.userChoices.category === 'fun')
       temp = this.state.categoryTypes.entertainment;
-    else if (this.state.userChoices.category === 'scenic')
+    else if (this.state.userChoices.category === 'nature')
       temp = this.state.categoryTypes.scenic;
     else if (this.state.userChoices.category === 'history')
       temp = this.state.categoryTypes.history;
@@ -243,7 +240,7 @@ class MapsContainer extends Component {
                     />
                     </div>
                     <CategoryDropDown 
-                      onChange={(event) => this.updateUserChoices(event)}
+                      onClick={(event) => this.updateUserChoices(event)}
                     />
                     <Divider />
                   </div>
