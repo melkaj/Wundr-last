@@ -25,22 +25,11 @@ const NY_BKBRIDGE = { lat: 40.7073329, lng: -74.0057195 };
 
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-light">
+    <nav className="navbar navbar-expand-sm navbar-primary bg-light ">
       <Link className="navbar-brand" to="/">
-        <img src={WundrLogo} alt="Logo" height="27px" width="auto" className="d-inline-block align-top" />
+        <img src={WundrLogo} alt="Logo" height="34px" width="auto" className="d-inline-block align-top" />
         </Link>
-      <ul className="navbar-nav ml-auto">
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/posts/new">
-            Sign up
-          </NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" exact to="/about-us">
-            Login
-          </NavLink>
-        </li>
-      </ul>
+
     </nav>
   );
 }
@@ -247,12 +236,14 @@ class MapsContainer extends Component {
                         addMarker={this.addMarker}
                       />
                     </div>
+                    <div>
+                      <div>Distance: </div>
                     <ConstraintSlider
                       iconType="car"
                       value={time}
                       onChange={(value) => this.updateConstraintTime(key, value)}
-                      text="How much free time ya got?"
                     />
+                    </div>
                     <CategoryDropDown 
                       onChange={(event) => this.updateUserChoices(event)}
                     />
