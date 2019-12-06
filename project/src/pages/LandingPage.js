@@ -9,7 +9,7 @@ import {
 
 import WundrLogo from '../images/Logotype.png';
 import RunningWoman from '../images/test2.png';
-//import ArtGirl from "../images/artGirl.png";
+import ArtGirl from "../images/artGirl.png";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Row from 'react-bootstrap/Row';
@@ -24,18 +24,6 @@ import './LandingPage.css'
         <Link className="navbar-brand" to="/">
           <img src={WundrLogo} alt="Logo" height="34px" width="auto" className="d-inline-block align-top" />
           </Link>
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <NavLink className="nav-link" exact to="/posts/new">
-              Sign up
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" exact to="/about-us">
-              Login
-            </NavLink>
-          </li>
-        </ul>
       </nav>
     );
   }
@@ -53,9 +41,11 @@ import './LandingPage.css'
   function Subheader(){
     return(
         <div>
-          <p className = "subheader">What to do with all that free time?</p>
-            <p className="subheader_text">Wundr is an platform that aims to connect users to relevant activities based on criteria they provide! We'll ask you a few easy questions, and give you some wundr-ful activities!
-          </p>
+          <p className="subheader">Wundr customizes activities based on:</p>
+          <li className="subheader_list">Location</li> 
+          <li className="subheader_list">Distance</li>
+          <li className="subheader_list">Interests</li> 
+          <p className="subheader_text">We'll ask you a few easy questions, and give you some wundr-ful activities!</p>
         </div>
       );
   }
@@ -113,14 +103,13 @@ class LandingPage extends React.Component {
                 <Subheader2/>
               </Col>
               <Col>
-                {/* <img src={ArtGirl} className="artgirl"/> */}
-                This is where ArtGirl should
+                <img src={ArtGirl} className="artgirl"/>
               </Col>
             </Row>
 
             <Row>
               <Col> 
-                <div className="footer">Footer</div>
+                <div className="footer"></div>
               </Col>
             </Row>
             </body>

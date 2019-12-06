@@ -28,9 +28,9 @@ const CategoryDropDown = (({ onChange }) => {
         </Menu>
     );
     return(
-        <div>
-            <Dropdown className="" overlay={menu} placement="bottomLeft" onClick={onChange}>
-                <Button>Choose Category</Button>
+        <div style={{paddingTop:"10px"}}>
+            <Dropdown overlay={menu} placement="bottomLeft" onClick={onChange}>
+                <Button block>Choose Category</Button>
             </Dropdown>
         </div>
     );
