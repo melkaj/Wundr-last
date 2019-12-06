@@ -150,31 +150,65 @@ class MapsContainer extends Component {
       // radius: '30000', // Cannot be used with rankBy. Pick your poison!
       type: temp,  //['restaurant', 'cafe', 'bakery'], // List of types: https://developers.google.com/places/supported_types
       query: this.state.userChoices.category, //'pizza',
-      rankBy: mapsApi.places.RankBy.DISTANCE, // Cannot be used with radius.
+      rankBy: mapsApi.places.RankBy.prominence, // IT WAS DISTANCE // Cannot be used with radius.
     };
+
+    // used to get a random number between 0 and a specified value
+    const getRandomInt = (max) => {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
 
     // First, search for ice cream shops.
     placesService.textSearch(placesRequest, ((response) => {
       // Only look at the nearest top 5.
+
+      console.log(response.length);
       const responseLimit = Math.min(5, response.length);
+
+      // array initialized with false. If an activity becomes used, then that index in this
+      // array becomes true. So if we get another random number that is equal to true valued index,
+      // we can skip it
+      const responseLength = Array.apply(null, Array(response.length)).map(index => {
+        return false;
+      });
+      console.log(responseLength);
+
       for (let i = 0; i < responseLimit; i++) {
-        const iceCreamPlace = response[i];
-        const { rating, name } = iceCreamPlace;
-        const address = iceCreamPlace.formatted_address; // e.g 80 mandai Lake Rd,
-        const priceLevel = iceCreamPlace.price_level; // 1, 2, 3...
-        let photoUrl = '';
-        let openNow = false;
-        if (iceCreamPlace.opening_hours) {
-          openNow = iceCreamPlace.opening_hours.open_now; // e.g true/false
-        }
-        if (iceCreamPlace.photos && iceCreamPlace.photos.length > 0) {
-          photoUrl = iceCreamPlace.photos[0].getUrl();
+        // Finds random number from the first half of the results 
+        let temp = getRandomInt((response.length)/2);
+        const activity = response[temp];
+        
+        // Makes sure that a response has not been chosen before
+        while (responseLength[temp] === true || (!activity.photos && activity.photos.length <= 0 && typeof(activity.photos[0].getUrl()) === 'undefined')){
+          temp = getRandomInt((response.length)/2);
+          activity = response[temp];
         }
 
-        // Second, For each iceCreamPlace, check if it is within acceptable travelling distance
+        const { rating, name } = activity;
+        const address = activity.formatted_address; // e.g 80 mandai Lake Rd,
+        const priceLevel = activity.price_level; // 1, 2, 3...
+        let photoUrl = '';
+        photoUrl = activity.photos[0].getUrl();
+
+        let openNow = false;
+        if (activity.opening_hours) {
+          openNow = activity.opening_hours.open_now; // e.g true/false
+        }
+        
+        // console.log(`IIIIIIIII: ${i}`)
+        // console.log(typeof(activity.photos[0].getUrl()));
+        // console.log(activity.photos.length);
+
+        // if (activity.photos && activity.photos.length > 0 && activity.photos[0].getUrl().length > 0) {
+        //   photoUrl = activity.photos[0].getUrl();
+        //   console.log(typeof(activity.photos[0].getUrl()));
+        //   console.log(activity.photos.length);
+        // }
+
+        // Second, For each activity, check if it is within acceptable travelling distance
         const directionRequest = {
           origin: markerLatLng,
-          destination: address, // Address of ice cream place
+          destination: address, // Address of activity
           travelMode: 'DRIVING',
         }
         directionService.route(directionRequest, ((result, status) => {
@@ -198,6 +232,7 @@ class MapsContainer extends Component {
           // Finally, Add results to state
           this.setState({ searchResults: filteredResults });
         }));
+        responseLength[temp] = true;
       }
     }));
   });
@@ -240,7 +275,7 @@ class MapsContainer extends Component {
                     />
                     </div>
                     <CategoryDropDown 
-                      onClick={(event) => this.updateUserChoices(event)}
+                      onChange={(event) => this.updateUserChoices(event)}
                     />
                     <Divider />
                   </div>

@@ -4,6 +4,7 @@ import { Rate } from 'antd';
 // TODO: info is bad naming.
 const PlaceCard = (({ info, key }) => {
   const { address, distanceText, name, openNow, photoUrl, priceLevel, rating, timeText } = info;
+  console.log(`name: ${name} \nphoto: ${photoUrl} `);
   return (
     <div key={key} className="col-3 w-100 mx-4 my-4">
       <img src={photoUrl} className="image-wrapper-sm mb-2" alt="photo" />

@@ -12,7 +12,7 @@ const CategoryDropDown = (({ onChange }) => {
                 <Option value="fun">Entertainment</Option>
                 <Option value="history">History</Option>
                 <Option value="nature">Nature</Option>
-                <Option value="food">food</Option>
+                <Option value="food">Food</Option>
             </Select>   
         </div>
     );

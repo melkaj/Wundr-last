@@ -12,7 +12,6 @@ class App extends Component {
       <div className="App">
         <div className="container h-100">
           <MapContainer />
-          {/* <CategoryDropDown /> */}
         </div>
       </div>
     );
