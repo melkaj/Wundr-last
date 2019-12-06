@@ -77,11 +77,11 @@ class MapsContainer extends Component {
   });
 
   updateUserChoices = ((event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const prevUserChoices = this.state.userChoices;
     const userChoices = Object.assign([], prevUserChoices);
-    userChoices.category = event.target.target;
-    userChoices.price = event.target.valueM;
+    userChoices.category = event; //.target.value
+    // userChoices.price = event.target.valueM;
     this.setState({ userChoices });
     console.log(this.state.userChoices);
   })
@@ -126,7 +126,7 @@ class MapsContainer extends Component {
     });
   });
 
-  // With the constraints, find some places serving ice-cream
+  // With the constraints
   handleSearch = (() => {
     const { markers, constraints, placesService, directionService, mapsApi } = this.state;
     if (markers.length === 0) {
@@ -212,10 +212,8 @@ class MapsContainer extends Component {
     const { autoCompleteService, geoCoderService } = this.state; // Google Maps Services
     return (
 
-<body>
-  <Navigation/>
-
-
+  <body>
+    <Navigation/>
       <div className="w-100 d-flex py-4 flex-wrap justify-content-center">
         <h1 className="w-100 fw-md1">Find Something to Do!</h1>
         {/* Constraints section */}
@@ -279,7 +277,7 @@ class MapsContainer extends Component {
         </section>
 
         {/* Search Button */}
-        <Button className="mt-4 fw-md" type="primary" size="lg" onClick={this.handleSearch}>Search!</Button>
+        <Button className="mt-4 fw-md" type="primary" size="large" onClick={this.handleSearch}>Search!</Button>
 
         {/* Results section */}
         {searchResults.length > 0 ?
@@ -298,7 +296,7 @@ class MapsContainer extends Component {
           </>
           : null}
       </div>
-      </body>
+    </body>
 
     )
   }

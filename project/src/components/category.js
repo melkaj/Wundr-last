@@ -1,47 +1,91 @@
-import React, { Component } from 'react';
+import React from 'react';
 import 'antd/dist/antd.css';
-import { Menu, Dropdown, Icon, Button, message } from 'antd';
+// import { Menu, Dropdown, Icon, Button, message, Select } from 'antd';
+import { Select } from 'antd';
+
+const { Option } = Select;
 
 const CategoryDropDown = (({ onChange }) => {
-    const menu = (
-        <Menu>
-          <Menu.Item>
-            <a target="entertainment" rel="noopener noreferrer" onClick={onChange}>
-              Entertainment
-            </a>
-          </Menu.Item>
-          <Menu.Item >
-            <a target="history" rel="noopener noreferrer" onClick={onChange}>
-              History
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a target="scenic" rel="noopener noreferrer" onClick={onChange}>
-              Scenic
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a target="food" rel="noopener noreferrer" onClick={onChange}>
-              Food
-            </a>
-          </Menu.Item>
-        </Menu>
-    );
-    return(
+    return (
         <div style={{paddingTop:"10px"}}>
-            <Dropdown overlay={menu} placement="bottomLeft" onClick={onChange}>
-                <Button block>Choose Category</Button>
-            </Dropdown>
+            <Select defaultValue="Choose Category" style={{ width: 200 }} onChange={onChange}>
+                <Option value="fun">Entertainment</Option>
+                <Option value="history">History</Option>
+                <Option value="nature">Nature</Option>
+                <Option value="food">food</Option>
+            </Select>   
         </div>
     );
 });
-
 
 export default CategoryDropDown;
 
 
 
 
+// function handleChange(value) {
+//   console.log(`selected ${value}`);
+// }
+
+// ReactDOM.render(
+//   <div>
+//     <Select defaultValue="lucy" style={{ width: 120 }} onChange={handleChange}>
+//       <Option value="jack">Jack</Option>
+//       <Option value="lucy">Lucy</Option>
+//       <Option value="disabled" disabled>
+//         Disabled
+//       </Option>
+//       <Option value="Yiminghe">yiminghe</Option>
+//     </Select>
+//     <Select defaultValue="lucy" style={{ width: 120 }} disabled>
+//       <Option value="lucy">Lucy</Option>
+//     </Select>
+//     <Select defaultValue="lucy" style={{ width: 120 }} loading>
+//       <Option value="lucy">Lucy</Option>
+//     </Select>
+//   </div>,
+//   mountNode,
+// );
+
+
+
+
+// const CategoryDropDown = (({ onChange }) => {
+//     const menu = (
+//         <Menu>
+//           <Menu.Item>
+//             <a target="entertainment" rel="noopener noreferrer" onClick={onChange}>
+//               Entertainment
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item >
+//             <a target="history" rel="noopener noreferrer" onClick={onChange}>
+//               History
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item>
+//             <a target="scenic" rel="noopener noreferrer" onClick={onChange}>
+//               Scenic
+//             </a>
+//           </Menu.Item>
+//           <Menu.Item>
+//             <a target="food" rel="noopener noreferrer" onClick={onChange}>
+//               Food
+//             </a>
+//           </Menu.Item>
+//         </Menu>
+//     );
+//     return(
+//         <div style={{paddingTop:"10px"}}>
+//             <Dropdown overlay={menu} placement="bottomLeft" onClick={onChange}>
+//                 <Button block>Choose Category</Button>
+//             </Dropdown>
+//         </div>
+//     );
+// });
+
+
+// export default CategoryDropDown;
 
 
 
