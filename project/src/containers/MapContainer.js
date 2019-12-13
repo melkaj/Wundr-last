@@ -18,7 +18,9 @@ require('dotenv').config();
 // ENTER API KEY AT LINE 216
 
 // where we want our map to be centered
-const NY_BKBRIDGE = { lat: 40.7073329, lng: -74.0057195 };
+// const NY_BKBRIDGE = { lat: 40.7073329, lng: -74.0057195 };
+const NY_BKBRIDGE = { lat: 40.680663, lng: -73.964908 };
+
 
 function Navigation(props) {
   return (
@@ -97,21 +99,20 @@ class MapsContainer extends Component {
     const markers = Object.assign([], prevMarkers);
 
     // If name already exists in marker list just replace lat & lng.
-    let newMarker = true;
-    for (let i = 0; i < markers.length; i++) {
-      if (markers[i].name === name) {
-        newMarker = false;
-        markers[i].lat = lat;
-        markers[i].lng = lng;
-        message.success(`Updated "${name}" Marker`);
-        break;
-      }
-    }
+    // let newMarker = true;
+    // for (let i = 0; i < markers.length; i++) {
+      // if (markers[i].name === name) {
+        // newMarker = false;
+        // markers[i].lat = lat;
+        // markers[i].lng = lng;
+      //   break;
+      // }
+    // }
     // Name does not exist in marker list. Create new marker
-    if (newMarker) {
+    // if (newMarker) {
       markers.push({ lat, lng, name });
       // message.success(`Added new "${name}" Marker`);
-    }
+    // }
 
     this.setState({ markers });
   });
@@ -172,7 +173,7 @@ class MapsContainer extends Component {
       // Only look at the nearest top 5.
 
       console.log(response.length);
-      const responseLimit = Math.min(5, response.length);
+      const responseLimit = Math.min(3, response.length);
 
       // array initialized with false. If an activity becomes used, then that index in this
       // array becomes true. So if we get another random number that is equal to true valued index,
@@ -194,10 +195,16 @@ class MapsContainer extends Component {
         }
 
         const { rating, name } = activity;
-        const address = activity.formatted_address; // e.g 80 mandai Lake Rd,
-        const priceLevel = activity.price_level; // 1, 2, 3...
+        const address = activity.formatted_address; 
+        const priceLevel = activity.price_level; 
         let photoUrl = '';
         photoUrl = activity.photos[0].getUrl();
+
+        this.state.geoCoderService.geocode(activity, ((response) => {
+          const { location } = response[0].geometry;
+          console.log(location);
+          this.addMarker(location.lat(), location.lng(), location.name);
+        }))
 
         let openNow = false;
         if (activity.opening_hours) {
@@ -240,9 +247,21 @@ class MapsContainer extends Component {
           }
           // Finally, Add results to state
           this.setState({ searchResults: filteredResults });
+
         }));
+
         responseLength[temp] = true;
       }
+
+      // add markers
+      for (let i = 0; i < this.state.searchResults.length; i++) {
+        console.log(this.state.searchResults.length);
+        console.log(this.state.searchResults[i].lat);
+        console.log(this.state.searchResults[i].lng);
+
+        this.addMarker(this.state.searchResults[i].lat, this.state.searchResults[i].lng, this.state.searchResults[i].name);
+      }
+
     }));
   });
 
@@ -304,13 +323,13 @@ class MapsContainer extends Component {
         </section>
 
         {/* Maps Section */}
-        <section className="col-8 h-lg">
+        <section className="col-4 h-md">
           <GoogleMapReact
             bootstrapURLKeys={{
               key: "AIzaSyAbERNzM4B9kAEErVnaQmJ2t1Pntx9mdHo",
               libraries: ['places', 'directions']
             }}
-            defaultZoom={11}
+            defaultZoom={10}
             defaultCenter={{ lat: NY_BKBRIDGE.lat, lng: NY_BKBRIDGE.lng }}
             yesIWantToUseGoogleMapApiInternals={true}
             onGoogleApiLoaded={({ map, maps }) => this.apiHasLoaded(map, maps)} // "maps" is the mapApi. Bad naming but that's their library.
