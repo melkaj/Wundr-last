@@ -1,0 +1,44 @@
+.ProfilePics{
+  max-width: 325px;
+  height: auto;
+  border-radius: 50%;
+  border: 10px solid #4E67EB;
+  display: block;
+  margin: auto;
+}
+
+.ProfileText{
+  text-align: center;
+  color: gray;	
+  font-size: 100%;
+  font-family: 'Montserrat';
+  line-height: auto;
+  font-weight: 100;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 25px;
+}
+
+.body{
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.Bold{
+  font-weight: 800;
+}
+
+.coverImage{
+  width: auto;
+  height: 55%;
+}
+
+.Title{
+    padding-top: 20px;
+    color:#4E67EB;	
+    font-size:  250%;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 50px;
+}

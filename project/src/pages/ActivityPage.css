@@ -1,0 +1,226 @@
+.coverImage{
+  width: auto;
+  height: 55%;
+}
+
+.profilePic{
+  border-radius: 50%;
+  max-height: 150px;
+  align: left;
+}
+
+.imgCent{
+  text-align: right;
+}
+
+.Review{
+  font-family: 'Montserrat';
+  font-weight: 300;
+  padding: 25px 25px 0 25px;
+  font-size: 125%;
+  color: #4e4e4e;
+  padding-right: 100px;
+  line-height: .99;
+}
+
+.ReviewTitle{
+  font-weight: 800;
+  font-size: 150%;
+}
+
+.info{
+  border-radius: 50px;
+  text-align: center;
+  min-height: 300px;
+  padding: 75px 25px 10px 25px;
+  line-height: .9;
+}
+
+.infoHeader{
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-size: 300%;
+}
+
+.information{
+  color: #4e4e4e;
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-size: 150%;
+}
+
+.tagline{
+  color:white;	
+  font-size: 250%;
+  font-family: 'Montserrat';
+  line-height: .9;
+  font-weight: 800;
+  text-align: left;
+  position: absolute;
+  bottom: 0;
+}
+
+.subHeader3{
+  font-weight: 300;
+}
+
+.desciption{
+  font-family: 'Montserrat';
+  font-style: italic;
+  font-weight: 300;
+  padding: 25px 25px 0 25px;
+  font-size: 125%;
+  color: #4e4e4e;
+}
+
+.descriptor{
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-size: 300%;
+  text-align: center ;
+  color: #4E67EB;
+}
+
+.sectionHeader{
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-size: 300%;
+  color: #4E67EB;
+}
+
+.reviewHeader{
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-size: 300%;
+  text-align: center ;
+  color: #4E67EB;
+}
+
+.HeaderBg{
+  background-image: url("../images/snug_harbor2.png");
+  background-size: cover;
+  box-shadow: inset 0px -200px 100px -10px rgba(0,0,0,0.7  );
+  min-height: 500px;
+  max-width: 100;
+}
+
+.test2{
+  height: auto;
+}
+
+.test3{
+  width:100%;
+}
+
+.test4{
+  padding-right: auto;
+  padding-left: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+.test5 {
+    padding-right: auto;
+    padding-left: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.customButton{
+  color: #4E67EB;
+  font-size: 200%;
+  font-family: 'Montserrat';
+  line-height: auto;
+  font-weight: 600;
+  text-align: center;
+}
+
+.body{
+  padding-left:3%;
+  padding-right:3%;
+}
+
+.lineupL{
+  text-align: center;
+  padding-left: 100px;
+}
+
+.lineupR{
+  text-align: center;
+  padding-right: 100px;
+}
+
+.runningWoman{
+  width: 50%;
+  height: auto;
+  display: inline-block;
+}
+
+.subheader{
+  padding-top: 20px;
+  color:#4E67EB;	
+  font-size:  250%;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  text-align: center;
+}
+
+.subheader_text{
+  color: gray;	
+  font-size: 150%;
+  font-family: 'Montserrat';
+  line-height: auto;
+  font-weight: 100;
+  text-align: center;
+  line-height: .98;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.subheader_list{
+  
+  color: gray;	
+  font-size: 150%;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  text-align: center;
+  line-height: .98;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 10px;
+}
+.adCon{
+  padding-top: 100px;
+  padding-bottom: 100px;
+  font-size: 200%;
+  text-align: center;
+  font-family: 'Montserrat';
+  font-weight: 800;
+}
+
+.footer{
+  background-color: white;
+  padding: 100px;
+}
+
+.artgirl{
+  max-height: 400px;
+}
+
+.Row1{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+
+.Row2{
+  padding-bottom: 25px;
+}
+
+
+.subheader2{
+  padding-top: 50px;
+  color:#4E67EB;	
+  font-size:  250%;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  text-align: center;
+}
