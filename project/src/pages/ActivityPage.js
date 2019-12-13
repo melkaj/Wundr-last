@@ -18,9 +18,9 @@ import './LandingPage.css'
   function Navigation(props) {
     return (
       <nav className="navbar navbar-expand-sm navbar-primary bg-light ">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/activity">
           <img src={WundrLogo} alt="Logo" height="34px" width="auto" className="d-inline-block align-top" />
-          </Link>
+        </Link>
       </nav>
     );
   }
@@ -50,13 +50,13 @@ import './LandingPage.css'
     return(
         <div>
           <p className = "subheader">Don't waste any more time!</p>
-            <p className="subheader_text">Don't👏 pretend👏 to 👏be 👏entitled👏 to👏 financial👏 compensation👏 if 👏you 👏or👏 a👏 loved 👏one 👏hasn't👏 even 👏been 👏diagnosed👏 with 👏mesothelioma
+            <p className="subheader_text">Find some great recommendations and get your day started!
           </p>
         </div>
       );
   }
 
-class LandingPage extends React.Component {
+class ActivityPage extends React.Component {
   render() {
     return (
         // <Router>
@@ -79,6 +79,14 @@ class LandingPage extends React.Component {
                 <NavLink to="/findActivities">
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <Button variant="outline-primary" href="https://www.google.com" className="customButton" size="lg" block active>Start Wundr-ing!</Button>
+                  </div>
+                </NavLink>
+                <div style={{marginTop: 11}}>
+                  <p className="subheader_text">OR</p>
+                </div>
+                <NavLink to="/activity">
+                  <div style={{ display: "flex", justifyContent: "center" }}>
+                    <Button variant="outline-primary" href="https://www.google.com" className="customButton" size="lg" block active>I'm feeling Wundr-ous</Button>
                   </div>
                 </NavLink>
 
@@ -107,4 +115,4 @@ class LandingPage extends React.Component {
 }
  
 
-export default LandingPage;
+export default ActivityPage;

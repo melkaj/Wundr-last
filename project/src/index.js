@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import LandingPage from './pages/LandingPage'
+import ActivityPage from './pages/ActivityPage';
 import * as serviceWorker from './serviceWorker';
 
 import {
@@ -15,7 +16,8 @@ const routing =(
     <Router>
         <div>
             <Switch>
-                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/" component={ActivityPage} />
+                <Route path="/activity" component={LandingPage} />
                 <Route path="/findActivities" component={App} /> 
             </Switch>
         </div>
