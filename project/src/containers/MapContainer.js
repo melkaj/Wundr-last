@@ -15,8 +15,6 @@ import { Button, Divider, message } from 'antd';
 
 require('dotenv').config();
 
-// ENTER API KEY AT LINE 216
-
 // where we want our map to be centered
 // const NY_BKBRIDGE = { lat: 40.7073329, lng: -74.0057195 };
 const NY_BKBRIDGE = { lat: 40.680663, lng: -73.964908 };
@@ -168,7 +166,7 @@ class MapsContainer extends Component {
       return Math.floor(Math.random() * Math.floor(max));
     }
 
-    // First, search for ice cream shops.
+    // First, search for activities
     placesService.textSearch(placesRequest, ((response) => {
       // Only look at the nearest top 5.
 
@@ -210,16 +208,6 @@ class MapsContainer extends Component {
         if (activity.opening_hours) {
           openNow = activity.opening_hours.open_now; // e.g true/false
         }
-        
-        // console.log(`IIIIIIIII: ${i}`)
-        // console.log(typeof(activity.photos[0].getUrl()));
-        // console.log(activity.photos.length);
-
-        // if (activity.photos && activity.photos.length > 0 && activity.photos[0].getUrl().length > 0) {
-        //   photoUrl = activity.photos[0].getUrl();
-        //   console.log(typeof(activity.photos[0].getUrl()));
-        //   console.log(activity.photos.length);
-        // }
 
         // Second, For each activity, check if it is within acceptable travelling distance
         const directionRequest = {
@@ -326,7 +314,7 @@ class MapsContainer extends Component {
         <section className="col-4 h-md">
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: "AIzaSyAbERNzM4B9kAEErVnaQmJ2t1Pntx9mdHo",
+              key: USE_YOUR_OWN_KEY,
               libraries: ['places', 'directions']
             }}
             defaultZoom={10}
